@@ -1,11 +1,17 @@
 import React from "react";
 
-export default function CourseGoal(props) {
+export default function CourseGoal({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
     <article>
       <div>
-        <h2>Title</h2>
-        <p>Description </p>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
       <button>Delete</button>
     </article>
