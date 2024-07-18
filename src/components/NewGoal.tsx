@@ -16,7 +16,12 @@ export default function NewGoal({ onAddGoal }: NewGoalProps) {
     const enteredSummary = summary.current!.value;
 
     e.currentTarget.reset(); //reset the form after submission
-    onAddGoal(enteredGoal, enteredSummary);
+
+    if (enteredGoal === "") {
+      alert("Goal can't be empty");
+    } else {
+      onAddGoal(enteredGoal, enteredSummary);
+    }
   }
   return (
     <form onSubmit={(e) => handleSubmit(e)}>

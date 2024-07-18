@@ -1,9 +1,9 @@
 import CourseGoal from "./components/CourseGoal.tsx";
 import goalsImg from "./assets/goals.png";
 import Header from "./components/Header.tsx";
-import { useState } from "react";
 import CourseGoalList from "./components/CourseGoalList.tsx";
 import NewGoal from "./components/NewGoal.tsx";
+import usePersistantState from "./hooks/usePersistantState.tsx";
 
 export type CourseGoal = {
   title: string;
@@ -12,11 +12,12 @@ export type CourseGoal = {
 };
 
 function App() {
-  const [goals, setGoals] = useState<CourseGoal[]>([]);
+  const [goals, setGoals] = usePersistantState<CourseGoal[]>("goals", []);
+  //const [goals, setGoals] = useState<CourseGoal[]>([]);
   // or const [goals, setGoals] = useState<Array<CourseGoal>>([]);
 
   function handleAddGoal(goal: string, summary: string) {
-    setGoals((prevGoals) => {
+    setGoals((prevGoals: CourseGoal[]) => {
       const newGoal: CourseGoal = {
         id: Math.random(),
         title: goal,
@@ -27,7 +28,9 @@ function App() {
   }
 
   function handleDeleteGoal(id: number) {
-    setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
+    setGoals((prevGoals: CourseGoal[]) =>
+      prevGoals.filter((goal) => goal.id !== id)
+    );
   }
 
   return (
