@@ -1,4 +1,4 @@
-import React, { FC, type PropsWithChildren, type ReactNode } from "react";
+import { type PropsWithChildren } from "react";
 
 // type CourseGoalProps = {
 //   title: string;
@@ -12,15 +12,27 @@ import React, { FC, type PropsWithChildren, type ReactNode } from "react";
 //   children: ReactNode;
 // }
 
-type CourseGoalProps = PropsWithChildren<{ title: string }>; // (same as ReactNode)
+type CourseGoalProps = PropsWithChildren<{
+  id: number;
+  title: string;
+  onDeleteGoal: (id: number) => void;
+}>; // (same as ReactNode)
 
-export default function CourseGoal({ title, children }: CourseGoalProps) {
+export default function CourseGoal({
+  title,
+  id,
+  children,
+  onDeleteGoal,
+}: CourseGoalProps) {
   return (
     <article>
       <div>
         <h2>{title}</h2>
         {children}
       </div>
+      <button type="button" onClick={() => onDeleteGoal(id)}>
+        Delete Goal
+      </button>
     </article>
   );
 }
