@@ -16,10 +16,10 @@ export default function CourseGoalList({
         <li key={goal.id}>
           <CourseGoal
             id={goal.id}
-            title={goal.id.toString()}
+            title={goal.title}
             onDeleteGoal={onDeleteGoal}
           >
-            <p>Learn React and TypeScript from the ground up. </p>
+            {goal.description}
           </CourseGoal>
         </li>
       ))}

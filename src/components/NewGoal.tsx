@@ -1,7 +1,11 @@
 import React, { FormEvent } from "react";
 import { useRef } from "react";
 
-export default function NewGoal() {
+type NewGoalProps = {
+  onAddGoal: (name: string, summary: string) => void;
+};
+
+export default function NewGoal({ onAddGoal }: NewGoalProps) {
   const goal = useRef<HTMLInputElement>(null);
   const summary = useRef<HTMLInputElement>(null);
 
@@ -10,7 +14,9 @@ export default function NewGoal() {
 
     const enteredGoal = goal.current!.value;
     const enteredSummary = summary.current!.value;
-    console.log(enteredGoal, enteredSummary);
+
+    e.currentTarget.reset(); //reset the form after submission
+    onAddGoal(enteredGoal, enteredSummary);
   }
   return (
     <form onSubmit={(e) => handleSubmit(e)}>

@@ -15,12 +15,12 @@ function App() {
   const [goals, setGoals] = useState<CourseGoal[]>([]);
   // or const [goals, setGoals] = useState<Array<CourseGoal>>([]);
 
-  function handleAddGoal() {
+  function handleAddGoal(goal: string, summary: string) {
     setGoals((prevGoals) => {
       const newGoal: CourseGoal = {
         id: Math.random(),
-        title: "New Goal",
-        description: "New Description",
+        title: goal,
+        description: summary,
       };
       return [...prevGoals, newGoal];
     });
@@ -35,7 +35,7 @@ function App() {
       <Header image={{ src: goalsImg, alt: "A list of goals" }}>
         <h1>To-do Tasks</h1>
       </Header>
-      <NewGoal />
+      <NewGoal onAddGoal={handleAddGoal} />
       <CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
     </main>
   );
