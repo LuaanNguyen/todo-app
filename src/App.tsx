@@ -33,7 +33,7 @@ function App() {
   return (
     <main>
       <Header image={{ src: goalsImg, alt: "A list of goals" }}>
-        <h1>To-do Tasks</h1>
+        <h1>To-do List</h1>
       </Header>
       <NewGoal onAddGoal={handleAddGoal} />
       <CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
