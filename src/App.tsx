@@ -3,6 +3,7 @@ import goalsImg from "./assets/goals.png";
 import Header from "./components/Header.tsx";
 import { useState } from "react";
 import CourseGoalList from "./components/CourseGoalList.tsx";
+import NewGoal from "./components/NewGoal.tsx";
 
 export type CourseGoal = {
   title: string;
@@ -34,9 +35,7 @@ function App() {
       <Header image={{ src: goalsImg, alt: "A list of goals" }}>
         <h1>To-do Tasks</h1>
       </Header>
-      <button type="button" onClick={handleAddGoal}>
-        Add Goal
-      </button>
+      <NewGoal />
       <CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
     </main>
   );
