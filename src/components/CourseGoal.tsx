@@ -21,7 +21,6 @@ export default function CourseGoal({ title, children }: CourseGoalProps) {
         <h2>{title}</h2>
         {children}
       </div>
-      <button>Delete</button>
     </article>
   );
 }
