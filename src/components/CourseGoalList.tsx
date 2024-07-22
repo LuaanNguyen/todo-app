@@ -14,7 +14,7 @@ export default function CourseGoalList({
 }: CourseGoalProps) {
   if (goals.length === 0) {
     return (
-      <InfoBox mode="hint">
+      <InfoBox mode="hint" severity="low">
         You have no course goal yet. Start adding some.
       </InfoBox>
     );
@@ -24,7 +24,7 @@ export default function CourseGoalList({
 
   if (goals.length >= 4) {
     warningBox = (
-      <InfoBox mode="warning">
+      <InfoBox mode="warning" severity="high">
         You are collecting a lot of responsibilities. Don't put too much on your
         plate!
       </InfoBox>
